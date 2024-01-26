@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.1-apache-kevin
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: php
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf

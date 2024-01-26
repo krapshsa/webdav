@@ -1,0 +1,16 @@
+{
+  "name": "webdav/test",
+  "require": {
+    "sabre/dav": "4.5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\": "tests/"
+    }
+  }
+}
