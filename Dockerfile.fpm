@@ -1,0 +1,5 @@
+FROM php:8.2.15-fpm-bookworm
+
+RUN pecl install xdebug  && docker-php-ext-enable xdebug  && pecl clear-cache
+
+EXPOSE 80

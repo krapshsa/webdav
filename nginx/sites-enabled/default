@@ -1,0 +1,22 @@
+server {
+    listen 80;
+    server_name your_domain.com;
+
+    root /var/www/html;
+
+    location / {
+        add_header X-Debug-Message "Request handled by location /" always;
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        client_max_body_size 0;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        proxy_request_buffering off;
+        chunked_transfer_encoding on;
+    }
+}
